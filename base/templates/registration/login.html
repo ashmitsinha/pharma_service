@@ -1,68 +1,15 @@
-<!-- <form method="POST">  
-{% csrf_token %}
-{{form}}
-<button type="submit">Submit</button>
-</form> -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+{% extends "base.html" %}
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            width: 350px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            background: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #357ac8;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h2>Login</h2>
-
-    {% if form.errors %}
-        <p style="color: red;">Invalid username or password</p>
-    {% endif %}
-
+{% block content %}
+<div class="shadow-wrap">
+  <div class="form-wrap">
+    <h3>Login</h3>
     <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Submit</button>
     </form>
-
-    <p style="margin-top: 10px; text-align:center;">
-        <a href="{% url 'password_reset' %}">Forgot Password?</a>
-    </p>
+    <a class="signup-link" href="{% url 'base:authView' %}">Signup</a>
+  </div>
 </div>
-
-</body>
-</html>
+{% endblock content %}

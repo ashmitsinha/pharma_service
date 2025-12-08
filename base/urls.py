@@ -1,11 +1,8 @@
-from django.contrib import admin
-from django.urls import path,include
-from . import views
-from .views import authView
+from django.urls import path, include
+from .views import authView, home
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
-    path("signup/", views.authView, name="authView"),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("",views.home, name="home")
+ path("", home, name="home"),
+ path("signup/", authView, name="authView"),
+ path("accounts/", include("django.contrib.auth.urls")),
 ]
